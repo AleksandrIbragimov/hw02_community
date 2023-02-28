@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
+
 {% block content %}
   <div class="container py-5">
+    {% block title %}
+      <title>Сообщества</title>
+    {% endblock %}
     <h1>Сообщество {{ group.title }}</h1>
     <p>{{ group.description }}</p>
-    <article>
-      {% for post in posts %} 
+    {% for post in posts %} 
+      <article>
         <ul>
           <li>
             Автор: {{ post.author.get_full_name }}
@@ -15,7 +19,7 @@
         </ul>      
         <p>{{ post.text|linebreaksbr }}</p>         
         {% if not forloop.last %}<hr>{% endif %}
-      {% endfor %}
-    </article>     
+      </article>
+    {% endfor %}
   </div>  
 {% endblock %}
